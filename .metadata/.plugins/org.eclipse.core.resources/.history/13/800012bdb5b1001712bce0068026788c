@@ -1,0 +1,38 @@
+package easy.array;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class GeneratePascal {
+	public List<List<Integer>> generate(int numRnows){
+		List<List<Integer>> result = new ArrayList();
+		if(numRnows<=0){
+			return new ArrayList(){{}};
+		}
+		for(int i = 1;i<=numRnows;i++){
+			List lists = new ArrayList();
+			
+			if(i == 1){
+				lists.add(1);
+			}else{
+				lists.add(1);
+				for(int j = 1; j<i-1;j++){
+					lists.add(result.get(i-1).get(j-1)+result.get(i-1).get(j));
+				}
+				lists.add(1);
+			}
+			
+			result.add(lists);
+		}
+		return result;
+	}
+	
+	public static void main(String[] args){
+		int numRnows = 5;
+		GeneratePascal ge = new GeneratePascal();
+		List<List<Integer>> f = ge.generate(numRnows);
+		for(int i= 0; i<numRnows;i++){
+			System.out.println(f.get(i));
+		}
+	}
+}
