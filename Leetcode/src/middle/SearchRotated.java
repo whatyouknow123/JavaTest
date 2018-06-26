@@ -1,7 +1,5 @@
 package middle;
 
-import java.util.ArrayList;
-
 public class SearchRotated {
 	public boolean search(int[] nums, int target){
 		int low = 0;

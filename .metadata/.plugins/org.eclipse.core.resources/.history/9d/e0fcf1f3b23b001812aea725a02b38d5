@@ -1,0 +1,46 @@
+package jingdong;
+
+import java.util.Scanner;
+
+public class SecurityCity {
+	public static int maxValue(int[] max, int length){
+		int maxresult = 0;
+		for(int i=0;i<length;i++){
+			if(maxresult<max[i]){
+				maxresult = max[i];
+			}
+		}
+		return maxresult;
+	}
+	public static void main(String args[]){
+		Scanner in = new Scanner(System.in);
+		while(in.hasNext()){
+			int n = in.nextInt();
+			int[] numbers = new int[n+1];
+			for(int i= 0;i<n;i++){
+				numbers[i] = in.nextInt();
+			}
+			int result = n;
+			for(int i =0;i<n-1;i++){
+//				int top;
+//				if(i==0){
+//					top = n-1;
+//				}else{
+//					top = n;
+//				}
+				for(int j = i+1;j<n;j++){
+					int[] max = new int[n+1];
+					System.arraycopy(numbers, 0, max, 0, n);
+					max[i] = 0;
+					max[j] = 0;
+					int maxresult = maxValue(max, n);
+//					int tempresult = Math.max(numbers[i], numbers[j]);
+					if(maxresult <=numbers[i]&&maxresult<=numbers[j]){
+						result++;
+					}
+				}
+			}
+			System.out.println(result);
+		}
+	}
+}
